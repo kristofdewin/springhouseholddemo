@@ -7,9 +7,13 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 @Component
 public class CleaningServiceImpl implements CleaningService {
+
+    @Autowired
+    Logger logger;
 
     private List<CleaningTool> cleaningTools;
 
@@ -28,8 +32,9 @@ public class CleaningServiceImpl implements CleaningService {
 
 
     public void clean() {
-        System.out.println("cleaningservice has been called!");
+        logger.info("cleaningservice has been called!");
         cleaningTools.forEach(CleaningTool::doCleanJob);
+        logger.info("cleaningservice finished");
     }
 
 

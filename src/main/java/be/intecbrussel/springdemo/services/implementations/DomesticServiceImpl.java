@@ -7,12 +7,16 @@ import be.intecbrussel.springdemo.services.GardeningService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.logging.Logger;
+
 @Component(value= "domesticService")
 public class DomesticServiceImpl implements DomesticService {
     @Autowired
     private GardeningService gardeningService;
     @Autowired
     private CleaningService cleaningService;
+    @Autowired
+    private Logger logger;
 
     public DomesticServiceImpl() {
         System.out.println("constructing domestic service");
@@ -36,6 +40,7 @@ public class DomesticServiceImpl implements DomesticService {
 
     @Override
     public void runHouseHold() {
+        logger.info("starting runHouseHold");
         gardeningService.garden();
         cleaningService.clean();
     }

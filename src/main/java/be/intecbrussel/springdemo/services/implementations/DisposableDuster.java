@@ -1,8 +1,15 @@
 package be.intecbrussel.springdemo.services.implementations;
 
 import be.intecbrussel.springdemo.services.CleaningTool;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.logging.Logger;
 
 public class DisposableDuster implements CleaningTool {
+
+    @Autowired
+    Logger logger;
+
     private boolean filthy= false;
 
     public DisposableDuster() {
@@ -12,9 +19,9 @@ public class DisposableDuster implements CleaningTool {
     @Override
     public void doCleanJob() {
         if(!filthy){
-        System.out.println("swifferdeswif");}
+        logger.info("swifferdeswif");}
         else{
-            System.out.println("you wouldnt wipe your glasses with a filthy piece of paper");
+            logger.info("you wouldnt wipe your glasses with a filthy piece of paper");
         }
         filthy=true;
     }

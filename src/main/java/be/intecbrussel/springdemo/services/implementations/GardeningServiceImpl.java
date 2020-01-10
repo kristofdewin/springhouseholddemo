@@ -7,10 +7,15 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import java.util.logging.Logger;
+
 @Component
 public class GardeningServiceImpl implements GardeningService {
 
     private GardeningTool gardeningTool;
+
+    @Autowired
+    Logger logger;
 
     @Autowired
     public GardeningServiceImpl(GardeningTool gardeningTool) {
@@ -28,7 +33,8 @@ public class GardeningServiceImpl implements GardeningService {
 
     @Override
     public void garden() {
-        System.out.println("gardeningservice starting up gardening protocol!!");
+        logger.info("gardeningservice starting up gardening protocol!!");
         gardeningTool.doGardenJob();
+        logger.info("gardeningservice executed");
     }
 }
