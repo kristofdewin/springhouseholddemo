@@ -14,6 +14,7 @@ public class HouseApp {
         DomesticService service =
                 applicationContext.getBean("domesticService", DomesticService.class);
         service.runHouseHold();
+        applicationContext.publishEvent(new LunchEvent());
         applicationContext.close();
 
     }

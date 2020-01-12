@@ -12,8 +12,14 @@ import java.util.logging.Logger;
 @Scope("prototype")
 @Order(1)
 public class Broom implements CleaningTool {
-    @Autowired
+
     Logger logger;
+
+    @Autowired
+    public Broom setLogger(Logger logger) {
+        this.logger = logger;
+        return this;
+    }
 
     public Broom(){
     }
